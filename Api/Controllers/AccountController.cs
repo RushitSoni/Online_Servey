@@ -82,8 +82,8 @@ namespace Api.Controllers
 
             if(!result.Succeeded) { return BadRequest(result.Errors); }
 
-            return Ok("Your Account Has Been Created, You Can Login");
-    
+            return Ok(new JsonResult(new { title = "Account Created", message = "Your Account Has Been Created, You Can Login" }));
+
 
         }
         #region Private Helper Methods
