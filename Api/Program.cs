@@ -27,6 +27,8 @@ builder.Services.AddDbContext<Context>(options => options.UseSqlServer(builder.C
 //JWT Service
 builder.Services.AddScoped<JWTServices>();
 
+builder.Services.AddScoped<EmailService>();
+
 
 //IdentityCoreServices
 
