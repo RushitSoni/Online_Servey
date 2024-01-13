@@ -245,7 +245,7 @@ namespace Api.Controllers
         {
             var token=await _userManager.GenerateEmailConfirmationTokenAsync(user);
             token= WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(token));
-            var url = $"{_config["JWT:ClientUrl"]}/{_config["Email:ConfirmationPath"]}?token={token}&email={user.Email}";
+            var url = $"{_config["JWT:ClientUrl"]}/{_config["Email:ConfirmEmailPath"]}?token={token}&email={user.Email}";
 
             var body = $"<p>Hello : {user.FirstName} {user.LastName}</p> " +
 
