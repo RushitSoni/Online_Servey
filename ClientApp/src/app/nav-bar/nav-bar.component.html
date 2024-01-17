@@ -17,6 +17,12 @@
                     <li class="nav-item">
                         <a routerLink="/play" class="nav-link" routerLinkActive="active">Play</a>
                     </li>
+                    
+                    <li class="nav-item" *ngIf="checkUserHasRole('Admin')">
+                        <a routerLink="/admin" class="nav-link" routerLinkActive="active">Admin</a>
+                    </li>
+                    
+                    
                 </ul>
 
                 <ul class="navbar-nav" *ngIf="(accountService.user$ | async)===null">

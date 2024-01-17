@@ -8,5 +8,8 @@ namespace Api.Data
     {
 
         public Context(DbContextOptions<Context> options) : base(options) { }
+
+
+        public DbSet<Name> names { get; set; }
     }
 }

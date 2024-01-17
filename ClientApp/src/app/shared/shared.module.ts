@@ -7,17 +7,19 @@ import { ReactiveFormsModule } from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import { NotificationsComponent } from './components/modals/notifications/notifications.component'
 import { ModalModule } from 'ngx-bootstrap/modal';
+import { UserHasRoleDirective } from './directives/user-has-role.directive';
 
 
 @NgModule({
-  declarations: [NotFoundComponent,ValidationMessagesComponent, NotificationsComponent],
+  declarations: [NotFoundComponent,ValidationMessagesComponent, NotificationsComponent, UserHasRoleDirective],
   imports: [
     CommonModule,
     RouterModule,
     ReactiveFormsModule,
     HttpClientModule,
+
     ModalModule.forRoot()
   ],
-  exports:[RouterModule,ReactiveFormsModule,HttpClientModule,ValidationMessagesComponent]
+  exports:[RouterModule,ReactiveFormsModule,HttpClientModule,ValidationMessagesComponent,UserHasRoleDirective]
 })
 export class SharedModule { }

@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { NotFoundComponent } from './shared/components/errors/not-found/not-found.component';
 import { PlayComponent } from './play/play.component';
 import { AuthorizationGuard } from './shared/guards/authorization.guard';
+import { AdminComponent } from './admin/admin.component';
 
 const routes: Routes = [
 
@@ -16,7 +17,10 @@ const routes: Routes = [
     canActivate:[AuthorizationGuard],
     children:[
       {
-        path:'play',component:PlayComponent
+        path:'play',component:PlayComponent,
+      },
+      {
+        path:'admin',loadChildren:()=>import('./admin/admin.module').then(module=>module.AdminModule)
       }
     ]
   },

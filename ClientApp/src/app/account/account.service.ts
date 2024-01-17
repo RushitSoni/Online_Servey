@@ -8,6 +8,8 @@ import { ReplaySubject, map, of } from 'rxjs';
 import { Router } from '@angular/router';
 import { ConfirmEmail } from '../shared/Models/confirmEmail';
 import { ResetPassword } from '../shared/Models/resetPassword';
+import { RegisterWithExternal } from '../shared/Models/registerWithExternal';
+import { LoginWithExternal } from '../shared/Models/loginWithExternal';
 
 @Injectable({
   providedIn: 'root'
@@ -84,6 +86,8 @@ export class AccountService {
   }
 
 
+
+
   getJWT(){
     const key= localStorage.getItem(environment.userKey)
     if(key){
@@ -94,6 +98,31 @@ export class AccountService {
       return null
     }
   }
+
+  
+
+  registerWithThirdParty(model: RegisterWithExternal) {
+    return this.http.post<User>(`${environment.appUrl}/api/account/register-with-third-party`, model).pipe(
+      map((user: User) => {
+        if (user) {
+          this.setUser(user);
+        }
+      })
+    );
+  }
+
+  
+
+  loginWithThirdParty(model: LoginWithExternal) {
+    return this.http.post<User>(`${environment.appUrl}/api/account/login-with-third-party`, model).pipe(
+      map((user: User) => {
+        if (user) {
+          this.setUser(user);
+        }
+      })
+    )
+  }
+
   private setUser(user : User){
     localStorage.setItem(environment.userKey,JSON.stringify(user))
     this.userSource.next(user)

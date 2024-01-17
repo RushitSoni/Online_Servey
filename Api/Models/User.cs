@@ -13,5 +13,7 @@ namespace Api.Models
 
         [Required]
         public DateTime DateCreated { get; set; } = DateTime.UtcNow;
+
+        public string Provider { get; set; }
     }
 }
